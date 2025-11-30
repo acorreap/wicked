@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: 'Wicked Bakckend Service'
+
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/wicked'
+    username: 'wicked'
+    password: 'wicked'
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yml
+
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: none
+
+
+wicked:
+  authentication:
+    jwt:
+      domain: 'localhost'
+      secret: ''
+
+      access-token:
+        path: '/'
+        expiration: 5m
+
+      refresh-token:
+        path: '/auth'
+        expiration: 30m
+        delete-on-expiration: false
+
+      remember-me:
+        enabled: true
+        expiration: 30d
+
+project:
+  data:
+    folder: "${user.home/wicked}"

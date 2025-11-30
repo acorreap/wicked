@@ -1,0 +1,8 @@
+databaseChangeLog:
+    #GLOBAL
+  - include:
+      file: db/changelog/changes/global/sequences.sql
+
+  #Tables
+  - include:
+      file: db/changelog/changes/auth/table.sql
