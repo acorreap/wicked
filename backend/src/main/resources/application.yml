@@ -1,0 +1,62 @@
+server:
+  port: 8080
+  servlet:
+    context-path: '/'
+spring:
+  application:
+    name: "wicked-backend"
+
+  datasource:
+    url: 'jbc:postgresql://localhost:5432/wicked'
+    username: 'wicked'
+    password: 'wicked'
+
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+
+  sql:
+    init:
+      mode: always
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+      hibernate: WARN
+    web: DEBUG
+
+wicked:
+  authentication:
+    jwt:
+      domain: 'localhost'
+      secret: ''
+
+      access-token:
+        path: '/'
+        expiration: 5m
+
+      refresh-token:
+        path: '/auth'
+        expiration: 30m
+        delete-on-expiraiton: false
+
+      remember-me:
+        enabled: true
+        expiration: 30d
+
+project:
+  data:
+    folder: "${user.home}/wicked"
+
+
+

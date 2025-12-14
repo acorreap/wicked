@@ -1,4 +1,4 @@
-package cl.acorreap.backend;
+package cl.acorreap.backend.kernel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
