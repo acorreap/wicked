@@ -5,9 +5,10 @@ server:
 spring:
   application:
     name: "wicked-backend"
+    front: 'http://localhost:4200'
 
   datasource:
-    url: 'jbc:postgresql://localhost:5432/wicked'
+    url: 'jdbc:postgresql://localhost:5432/wicked'
     username: 'wicked'
     password: 'wicked'
 
