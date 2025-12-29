@@ -6,8 +6,6 @@ import cl.acorreap.backend.auth.application.dto.UpdatePermissionDto;
 import cl.acorreap.backend.auth.application.mapper.PermissionDtoMapper;
 import cl.acorreap.backend.auth.domain.model.Permission;
 import cl.acorreap.backend.auth.domain.service.PermissionService;
-import cl.acorreap.backend.auth.infrastructure.mapper.PermissionMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

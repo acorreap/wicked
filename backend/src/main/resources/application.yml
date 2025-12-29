@@ -9,8 +9,8 @@ spring:
 
   datasource:
     url: 'jdbc:postgresql://localhost:5432/wicked'
-    username: 'wicked'
-    password: 'wicked'
+    username: ${DB_USER:wicked}
+    password: ${DB_PASSWORD:wicked}
 
   jpa:
     show-sql: true
