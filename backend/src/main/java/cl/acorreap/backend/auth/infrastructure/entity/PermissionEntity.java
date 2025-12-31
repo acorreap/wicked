@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,6 +26,9 @@ public class PermissionEntity {
     @Column(nullable = false)
     private boolean enabled;
 
+    @ManyToMany(mappedBy = "permissions")
+    private Set<RoleEntity> roles;
+
     @PrePersist
     public void prePersist() {
         if (this.createdAt == null) {
@@ -34,4 +38,15 @@ public class PermissionEntity {
         this.enabled = true;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof PermissionEntity)) return false;
+        return id != null && id.equals(((PermissionEntity) obj).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

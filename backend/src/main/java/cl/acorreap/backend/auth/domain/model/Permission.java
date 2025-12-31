@@ -1,5 +1,7 @@
 package cl.acorreap.backend.auth.domain.model;
 
+import cl.acorreap.backend.auth.infrastructure.entity.PermissionEntity;
+import cl.acorreap.backend.common.formatter.AuthorityNameFormatter;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -23,6 +25,9 @@ public class Permission {
     }
 
     public static Permission create(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Permission name cannot be null or blank");
+        }
         return new Permission(
                 null, name,
                 LocalDateTime.now(),
@@ -41,11 +46,27 @@ public class Permission {
         this.name = newName;
     }
 
+    public String getInternalName() {
+        return "PRIVILEGE_" + AuthorityNameFormatter.format(name);
+    }
+
     public void disable() {
         this.enabled = false;
     }
 
     public void enable() {
         this.enabled = true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Permission)) return false;
+        return id != null && id.equals(((Permission) obj).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
